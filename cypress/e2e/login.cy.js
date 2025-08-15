@@ -9,5 +9,6 @@ describe('Login com dados válidos tendo sucesso', () => {
     cy.get('#login-section > .btn').click()
 
     //Assert
+    cy.contains('h4', 'Realizar Transferência').should('be.visible')
   })
 })
