@@ -1,7 +1,7 @@
 describe('Teste login de usuário', () => {
   beforeEach(() => {
     //Arrange
-    cy.visit('http://localhost:4000/')
+    cy.visit(Cypress.env('URL'))
     //cy.screenshot('apos-acessar-pagina')
   })
 
@@ -20,10 +20,8 @@ describe('Teste login de usuário', () => {
     cy.contains('h4', 'Realizar Transferência').should('be.visible')
   })
 
+
   it('Login com dados inválidos sem sucesso', () => {
-    
-    //Arrange
-    cy.visit('http://localhost:4000/')
 
     //Act
     cy.fixture('credenciais').then(credenciais => {
