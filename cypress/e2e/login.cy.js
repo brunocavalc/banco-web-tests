@@ -2,14 +2,19 @@ describe('Teste login de usuário', () => {
   beforeEach(() => {
     //Arrange
     cy.visit('http://localhost:4000/')
+    //cy.screenshot('apos-acessar-pagina')
   })
 
   it('Login com dados válidos com sucesso', () => {
     
     //Act
-    cy.get('#username').click().type('julio.lima')
-    cy.get('#senha').click().type('123456')
+    cy.fixture('credenciais').then(credenciais => {
+      cy.get('#username').click().type(credenciais.valida.usuario)
+      cy.get('#senha').click().type(credenciais.valida.senha)
+    })
+    //cy.screenshot('apos-informar-dados-validos')
     cy.get('#login-section > .btn').click()
+    //cy.screenshot('apos-clicar-no-botao-entrar')
 
     //Assert
     cy.contains('h4', 'Realizar Transferência').should('be.visible')
@@ -21,8 +26,10 @@ describe('Teste login de usuário', () => {
     cy.visit('http://localhost:4000/')
 
     //Act
-    cy.get('#username').click().type('julio.lima')
-    cy.get('#senha').click().type('12345')
+    cy.fixture('credenciais').then(credenciais => {
+      cy.get('#username').click().type(credenciais.invalida.usuario)
+      cy.get('#senha').click().type(credenciais.invalida.senha)
+    })
     cy.contains('button', 'Entrar').click()
 
     //Assert
