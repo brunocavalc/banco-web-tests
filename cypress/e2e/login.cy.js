@@ -2,7 +2,7 @@ describe('Teste login de usuário', () => {
   beforeEach(() => {
     //Arrange
     //cy.visit(Cypress.env(URL))
-    cy.visit('http://localhost:4000')
+    cy.visit('/')
     //cy.screenshot('apos-acessar-pagina')
   })
 
