@@ -7,15 +7,8 @@ describe('Teste login de usuário', () => {
   })
 
   it('Login com dados válidos com sucesso', () => {
-    
     //Act
-    cy.fixture('credenciais').then(credenciais => {
-      cy.get('#username').click().type(credenciais.valida.usuario)
-      cy.get('#senha').click().type(credenciais.valida.senha)
-    })
-    //cy.screenshot('apos-informar-dados-validos')
-    cy.get('#login-section > .btn').click()
-    //cy.screenshot('apos-clicar-no-botao-entrar')
+    cy.fazerLoginComCredenciaisValidas()
 
     //Assert
     cy.contains('h4', 'Realizar Transferência').should('be.visible')
@@ -23,15 +16,10 @@ describe('Teste login de usuário', () => {
 
 
   it('Login com dados inválidos sem sucesso', () => {
-
     //Act
-    cy.fixture('credenciais').then(credenciais => {
-      cy.get('#username').click().type(credenciais.invalida.usuario)
-      cy.get('#senha').click().type(credenciais.invalida.senha)
-    })
-    cy.contains('button', 'Entrar').click()
+    cy.fazerLoginComCredenciaisInvalidas()
 
     //Assert
-    cy.get('.toast').should('have.text', 'Erro no login. Tente novamente.')
+    cy.verificarMensagemNoToast('Erro no login. Tente novamente.')
   })
 })
