@@ -6,11 +6,6 @@ describe('Tranferencias', () => {
 
     it('Deve transferir quando informo dados e valor validos', () => {
         // Act
-        // cy.selecionarOpcaoNaCombobox('conta-origem', 'João da Silva')
-        // cy.selecionarOpcaoNaCombobox('conta-destino', 'Maria Oliveira')
-        // cy.get('#valor').click().type('11')
-        // cy.contains('button', 'Transferir').click()
-
         cy.realizarTransferencia('João da Silva', 'Maria Oliveira', '11')
 
         //Assert
@@ -20,11 +15,6 @@ describe('Tranferencias', () => {
     it('Deve apresentar erro quando tentar transferir mais que 5mil sem o token', () => {
 
         //Act
-        // cy.selecionarOpcaoNaCombobox('conta-origem', 'João da Silva')
-        // cy.selecionarOpcaoNaCombobox('conta-destino', 'Maria Oliveira')
-        // cy.get('#valor').click().type('5000.01')
-        // cy.contains('button', 'Transferir').click()
-
         cy.realizarTransferencia('João da Silva', 'Maria Oliveira', '5000.01')
 
         //Assert
